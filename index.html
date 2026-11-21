@@ -153,6 +153,14 @@
   .spec-card-foot a{ font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--amber); font-weight:600; letter-spacing:0.02em;}
   .spec-card-foot a:hover{ text-decoration:underline; }
   .products-note{ margin-top:22px; font-size:12.5px; color:var(--stone); font-family:var(--mono); max-width:760px; }
+  .also-available{ margin:36px 0 18px; display:flex; align-items:center; gap:14px; }
+  .also-available .line{ flex:1; height:1px; background:var(--line-light); }
+  .also-available span.tag{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); white-space:nowrap; }
+  .spec-card-wide{ grid-column:1 / -1; display:grid; grid-template-columns:280px 1fr; }
+  .spec-card-wide .spec-photo{ min-height:240px; background:var(--paper-dim); }
+  .spec-card-wide .spec-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .spec-card-wide h3{ padding-top:20px; }
+  @media (max-width:760px){ .spec-card-wide{ grid-template-columns:1fr; } .spec-card-wide .spec-photo{ min-height:180px; } }
 
   .apps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .app-card{ background:#fff; border:1px solid var(--line-light); border-radius:8px; padding:24px 22px; transition:box-shadow .2s ease, transform .2s ease; }
@@ -375,7 +383,7 @@
           <div class="g-cap"><span class="gk" data-i18n="gallery.c2k">Label Detail</span><span class="gv" data-i18n="gallery.c2v">Batch No. &amp; manufacturer printed on every drum</span></div>
         </div>
         <div class="g-item g-sub">
-          <img src="images/warehouse-drums.jpg" alt="Sealed resin drums and an IBC tote in the warehouse" loading="lazy">
+          <img src="images/warehouse-overview-1.jpg" alt="Another angle of the resin drums and totes in storage" loading="lazy">
           <div class="g-cap"><span class="gk" data-i18n="gallery.c3k">Sealed Storage</span><span class="gv" data-i18n="gallery.c3v">Kept dry and unopened since removal</span></div>
         </div>
       </div>
@@ -459,6 +467,27 @@
         </div>
 
       </div>
+
+      <div class="also-available reveal"><span class="line"></span><span class="tag" data-i18n="products.also">Also Currently Available</span><span class="line"></span></div>
+
+      <div class="products-grid reveal">
+        <div class="spec-card spec-card-wide">
+          <div class="spec-photo"><img src="images/frp-vessels-2.jpg" alt="Rows of used FRP fibreglass pressure vessels in storage" loading="lazy"></div>
+          <div>
+            <h3 data-i18n="products.frp.title">Used FRP Filter Vessels</h3>
+            <p class="spec-desc" data-i18n="products.frp.desc">Fibreglass-reinforced plastic (FRP) pressure vessels, previously used to house filter media such as sand, activated carbon, or softening resin. No manufacturer branding.</p>
+            <table class="spec-table">
+              <tr><td data-i18n="products.label.brand">Brand</td><td data-i18n="products.frp.brand">Unbranded</td></tr>
+              <tr><td data-i18n="products.label.size">Size</td><td data-i18n="products.frp.size">Varies — tell us the diameter/height you need</td></tr>
+              <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
+              <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.frp.qty">Several dozen units on hand</td></tr>
+              <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
+            </table>
+            <div class="spec-card-foot"><a href="#contact" data-i18n="products.frp.cta">Enquire about these vessels →</a></div>
+          </div>
+        </div>
+      </div>
+
       <p class="products-note" data-i18n="products.note">* Both were originally designed for non-regenerable, single-use polishing service, so remaining exchange capacity can vary — we'd rather you test a sample than take our word for it.</p>
     </div>
   </section>
@@ -522,11 +551,12 @@
           </div>
           <div class="form-row">
             <div class="field">
-              <label data-i18n="form.grade">Resin of Interest</label>
+              <label data-i18n="form.grade">Item of Interest</label>
               <select name="resin_interest">
                 <option data-i18n="form.grade.opt0">Not sure yet</option>
                 <option>DOWEX Monosphere MR-3 UPW</option>
                 <option>AMBERJET UP6040</option>
+                <option data-i18n="form.grade.opt4">FRP Filter Vessels (unbranded)</option>
                 <option data-i18n="form.grade.opt3">Either / whichever is available</option>
               </select>
             </div>
@@ -685,6 +715,15 @@ const dict = {
   "products.cta":{zh:"询问这批货 →",en:"Enquire about this lot →",ms:"Bertanya tentang lot ini →"},
   "products.note":{zh:"* 两款产品最初均设计为不可再生的一次性精处理树脂，因此剩余交换容量会有所不同——与其听我们说，不如让您自己测一测样品。",en:"* Both were originally designed for non-regenerable, single-use polishing service, so remaining exchange capacity can vary — we'd rather you test a sample than take our word for it.",ms:"* Kedua-duanya asalnya direka untuk perkhidmatan penggilapan sekali guna, tidak boleh diregenerasi, jadi kapasiti pertukaran berbaki boleh berbeza — kami lebih suka anda menguji sampel daripada percaya kata-kata kami sahaja."},
 
+  "products.also":{zh:"另有现货",en:"Also Currently Available",ms:"Turut Tersedia Sekarang"},
+  "products.label.size":{zh:"尺寸",en:"Size",ms:"Saiz"},
+  "products.frp.title":{zh:"二手玻璃钢（FRP）过滤罐",en:"Used FRP Filter Vessels",ms:"Tangki Penapis FRP Terpakai"},
+  "products.frp.desc":{zh:"玻璃纤维增强塑料（FRP）压力罐，此前用于盛装石英砂、活性炭或软化树脂等过滤介质。罐身无厂商品牌标识。",en:"Fibreglass-reinforced plastic (FRP) pressure vessels, previously used to house filter media such as sand, activated carbon, or softening resin. No manufacturer branding.",ms:"Tangki tekanan plastik bertetulang gentian kaca (FRP), sebelum ini digunakan untuk menempatkan media penapis seperti pasir, karbon aktif, atau resin pelembut. Tiada jenama pengeluar."},
+  "products.frp.brand":{zh:"无品牌",en:"Unbranded",ms:"Tiada jenama"},
+  "products.frp.size":{zh:"规格不一——请告知所需直径/高度",en:"Varies — tell us the diameter/height you need",ms:"Berbeza-beza — beritahu kami diameter/ketinggian yang diperlukan"},
+  "products.frp.qty":{zh:"现有几十个",en:"Several dozen units on hand",ms:"Beberapa puluh unit tersedia"},
+  "products.frp.cta":{zh:"询问这批过滤罐 →",en:"Enquire about these vessels →",ms:"Bertanya tentang tangki ini →"},
+
   "apps.eyebrow":{zh:"该类型的常见用途",en:"Where This Type Is Used",ms:"Di Mana Jenis Ini Digunakan"},
   "apps.title":{zh:"混合床树脂通常用在哪里",en:"What mixed-bed resin is normally used for",ms:"Untuk apa resin katil campuran biasa digunakan"},
   "apps.sub":{zh:"为高纯度精处理而设计，不是普通软化用途——具体是否合适取决于您需要的纯度等级。",en:"Built for high-purity polishing, not basic softening — the right fit depends on the purity level you need.",ms:"Dibina untuk penggilapan ketulenan tinggi, bukan pelembutan asas — kesesuaian bergantung pada tahap ketulenan yang anda perlukan."},
@@ -730,9 +769,10 @@ const dict = {
   "form.email.ph":{zh:"you@company.com",en:"you@company.com",ms:"you@company.com"},
   "form.phone":{zh:"电话 / WhatsApp",en:"Phone / WhatsApp",ms:"Telefon / WhatsApp"},
   "form.phone.ph":{zh:"+60",en:"+60",ms:"+60"},
-  "form.grade":{zh:"感兴趣的树脂",en:"Resin of Interest",ms:"Resin Yang Diminati"},
+  "form.grade":{zh:"感兴趣的产品",en:"Item of Interest",ms:"Item Yang Diminati"},
   "form.grade.opt0":{zh:"尚未确定",en:"Not sure yet",ms:"Belum pasti"},
   "form.grade.opt3":{zh:"两者皆可 / 以现货为准",en:"Either / whichever is available",ms:"Mana-mana / yang tersedia"},
+  "form.grade.opt4":{zh:"玻璃钢过滤罐（无品牌）",en:"FRP Filter Vessels (unbranded)",ms:"Tangki Penapis FRP (tiada jenama)"},
   "form.qty":{zh:"所需数量",en:"Quantity Needed",ms:"Kuantiti Diperlukan"},
   "form.qty.ph":{zh:"例如：200升、5桶",en:"e.g. 200L, 5 drums",ms:"cth: 200L, 5 tong"},
   "form.message":{zh:"留言",en:"Message",ms:"Mesej"},
