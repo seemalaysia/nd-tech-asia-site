@@ -107,6 +107,22 @@
   .fact-card .fv{ font-size:13.5px; color:var(--ink); line-height:1.45;}
   .fact-card.full{ grid-column:1 / -1; }
 
+  /* ---------- GALLERY ---------- */
+  .gallery-section{ background:var(--paper-dim); border-top:1px solid var(--line-light); border-bottom:1px solid var(--line-light); }
+  .gallery-grid{ display:grid; grid-template-columns:1.3fr 1fr; grid-template-rows:auto auto; gap:14px; }
+  .gallery-grid .g-item{ position:relative; overflow:hidden; border-radius:8px; border:1px solid var(--line-light); background:#fff; box-shadow:0 10px 24px rgba(23,25,22,0.08); }
+  .gallery-grid .g-item img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease; }
+  .gallery-grid .g-item:hover img{ transform:scale(1.04); }
+  .gallery-grid .g-main{ grid-row:1 / 3; aspect-ratio:4/5; }
+  .gallery-grid .g-sub{ aspect-ratio:16/10.5; }
+  .g-cap{ position:absolute; left:0; right:0; bottom:0; padding:14px 16px 12px; background:linear-gradient(180deg, rgba(23,25,22,0) 0%, rgba(23,25,22,0.78) 100%); color:#fff; }
+  .g-cap .gk{ font-family:var(--mono); font-size:10.5px; letter-spacing:0.07em; text-transform:uppercase; color:var(--gold-light); display:block; margin-bottom:2px;}
+  .g-cap .gv{ font-size:13.5px; font-weight:500; }
+  @media (max-width:760px){
+    .gallery-grid{ grid-template-columns:1fr; }
+    .gallery-grid .g-main{ grid-row:auto; aspect-ratio:16/11; }
+  }
+
   .dark-section{ background:var(--ink); color:var(--paper); position:relative; }
   .dark-section .section-head p{ color:var(--stone); }
   .benefits-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
@@ -336,6 +352,31 @@
             <svg class="ficon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             <div><span class="fk" data-i18n="about.f5k">Pricing</span><span class="fv" data-i18n="about.f5v">No published price — tell us the quantity you need and we'll quote directly</span></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section tight">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dash"></span><span data-i18n="gallery.eyebrow">From Our Warehouse</span></span>
+        <h2 data-i18n="gallery.title">The actual stock — not a stock photo</h2>
+        <p data-i18n="gallery.sub">Taken on-site, unedited. What's in these photos is what ships.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="g-item g-main">
+          <img src="images/warehouse-overview-3.jpg" alt="Drums and totes of DOWEX and AMBERJET resin stacked in the warehouse" loading="lazy">
+          <div class="g-cap"><span class="gk" data-i18n="gallery.c1k">Current Stock</span><span class="gv" data-i18n="gallery.c1v">Both grades, sealed and palletised</span></div>
+        </div>
+        <div class="g-item g-sub">
+          <img src="images/dowex-batch-label.jpg" alt="Close-up of DOWEX Monosphere MR-3 UPW drum label showing batch number and manufacturer" loading="lazy">
+          <div class="g-cap"><span class="gk" data-i18n="gallery.c2k">Label Detail</span><span class="gv" data-i18n="gallery.c2v">Batch No. &amp; manufacturer printed on every drum</span></div>
+        </div>
+        <div class="g-item g-sub">
+          <img src="images/warehouse-drums.jpg" alt="Sealed resin drums and an IBC tote in the warehouse" loading="lazy">
+          <div class="g-cap"><span class="gk" data-i18n="gallery.c3k">Sealed Storage</span><span class="gv" data-i18n="gallery.c3v">Kept dry and unopened since removal</span></div>
         </div>
       </div>
     </div>
@@ -605,6 +646,16 @@ const dict = {
   "about.f4v":{zh:"可索取样品——先在您自己的系统上测试",en:"Sample available — test it on your own system first",ms:"Sampel tersedia — uji pada sistem anda sendiri dahulu"},
   "about.f5k":{zh:"定价",en:"Pricing",ms:"Harga"},
   "about.f5v":{zh:"无公开报价——请告知所需数量，我们将直接与您洽谈",en:"No published price — tell us the quantity you need and we'll quote directly",ms:"Tiada harga diterbitkan — beritahu kami kuantiti yang diperlukan dan kami akan sebut harga terus"},
+
+  "gallery.eyebrow":{zh:"仓库实拍",en:"From Our Warehouse",ms:"Dari Gudang Kami"},
+  "gallery.title":{zh:"这就是实际库存——不是网络图片",en:"The actual stock — not a stock photo",ms:"Inilah stok sebenar — bukan gambar hiasan"},
+  "gallery.sub":{zh:"现场实拍，未经修饰。照片里有什么，发货就是什么。",en:"Taken on-site, unedited. What's in these photos is what ships.",ms:"Diambil di tapak, tanpa suntingan. Apa yang ada dalam gambar ini adalah apa yang akan dihantar."},
+  "gallery.c1k":{zh:"现有库存",en:"Current Stock",ms:"Stok Semasa"},
+  "gallery.c1v":{zh:"两种型号均有，密封并已打托",en:"Both grades, sealed and palletised",ms:"Kedua-dua gred, tertutup dan dipalet"},
+  "gallery.c2k":{zh:"标签细节",en:"Label Detail",ms:"Butiran Label"},
+  "gallery.c2v":{zh:"每个桶上都印有批号及生产商信息",en:"Batch No. &amp; manufacturer printed on every drum",ms:"No. Kelompok &amp; pengilang dicetak pada setiap tong"},
+  "gallery.c3k":{zh:"密封存放",en:"Sealed Storage",ms:"Simpanan Tertutup"},
+  "gallery.c3v":{zh:"自卸出后一直保持干燥未开封",en:"Kept dry and unopened since removal",ms:"Disimpan kering dan tidak dibuka sejak dikeluarkan"},
 
   "benefits.eyebrow":{zh:"为何考虑这批库存",en:"Why Consider This Stock",ms:"Kenapa Pertimbangkan Stok Ini"},
   "benefits.title":{zh:"品牌树脂，按其实际价值定价",en:"Branded resin, priced for what it actually is",ms:"Resin berjenama, dihargai mengikut nilai sebenar"},
