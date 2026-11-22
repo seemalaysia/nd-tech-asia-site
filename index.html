@@ -125,7 +125,7 @@
 
   .dark-section{ background:var(--ink); color:var(--paper); position:relative; }
   .dark-section .section-head p{ color:var(--stone); }
-  .benefits-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
+  .benefits-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--line-dark); border:1px solid var(--line-dark);}
   .benefit-card{ background:var(--ink); padding:28px 24px; }
   .icon-badge{ width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
   .icon-badge svg{ width:22px; height:22px; }
@@ -153,14 +153,21 @@
   .spec-card-foot a{ font-family:var(--mono); font-size:12px; text-decoration:none; color:var(--amber); font-weight:600; letter-spacing:0.02em;}
   .spec-card-foot a:hover{ text-decoration:underline; }
   .products-note{ margin-top:22px; font-size:12.5px; color:var(--stone); font-family:var(--mono); max-width:760px; }
-  .also-available{ margin:36px 0 18px; display:flex; align-items:center; gap:14px; }
-  .also-available .line{ flex:1; height:1px; background:var(--line-light); }
-  .also-available span.tag{ font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone); white-space:nowrap; }
   .spec-card-wide{ grid-column:1 / -1; display:grid; grid-template-columns:280px 1fr; }
   .spec-card-wide .spec-photo{ min-height:240px; background:var(--paper-dim); }
   .spec-card-wide .spec-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
   .spec-card-wide h3{ padding-top:20px; }
   @media (max-width:760px){ .spec-card-wide{ grid-template-columns:1fr; } .spec-card-wide .spec-photo{ min-height:180px; } }
+  .spec-apps{ display:flex; flex-wrap:wrap; gap:7px; padding:2px 20px 18px; }
+  .spec-apps span{ font-family:var(--mono); font-size:10.5px; background:var(--paper-dim); border:1px solid var(--line-light); border-radius:20px; padding:4px 11px; color:var(--ink-soft); }
+
+  /* ---------- PRODUCT TABS ---------- */
+  .product-tabs{ display:flex; gap:9px; margin-bottom:30px; flex-wrap:wrap; }
+  .product-tabs button{ font-family:var(--mono); font-size:12.5px; letter-spacing:0.04em; text-transform:uppercase; padding:11px 20px; border-radius:22px; border:1px solid var(--line-light); background:#fff; color:var(--ink-soft); cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease; }
+  .product-tabs button.active{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+  .product-tabs button:hover:not(.active){ border-color:var(--ink); color:var(--ink); }
+  .tab-panel{ display:none; }
+  .tab-panel.active{ display:block; }
 
   .apps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .app-card{ background:#fff; border:1px solid var(--line-light); border-radius:8px; padding:24px 22px; transition:box-shadow .2s ease, transform .2s ease; }
@@ -394,19 +401,19 @@
   <section class="dark-section">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow"><span class="dash"></span><span data-i18n="benefits.eyebrow">Why Consider This Stock</span></span>
-        <h2 data-i18n="benefits.title">Branded resin, priced for what it actually is</h2>
+        <span class="eyebrow"><span class="dash"></span><span data-i18n="benefits.eyebrow">Why Work With Us</span></span>
+        <h2 data-i18n="benefits.title">Surplus stock, sourced carbon, priced for what it actually is</h2>
       </div>
       <div class="benefits-grid reveal">
         <div class="benefit-card">
           <span class="icon-badge gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span>
-          <h4 data-i18n="benefits.c1t">Below new-resin pricing</h4>
-          <p data-i18n="benefits.c1d">Surplus stock, priced accordingly once we know the volume you need.</p>
+          <h4 data-i18n="benefits.c1t">Competitive, flexible pricing</h4>
+          <p data-i18n="benefits.c1d">Surplus and sourced stock, priced accordingly for bulk orders once we know the volume you need.</p>
         </div>
         <div class="benefit-card">
           <span class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>
-          <h4 data-i18n="benefits.c2t">Verify before you buy</h4>
-          <p data-i18n="benefits.c2d">Test a sample on your own system before committing to the full lot.</p>
+          <h4 data-i18n="benefits.c2t">Test before you buy</h4>
+          <p data-i18n="benefits.c2d">Free samples available on request, so you can verify on your own system before committing.</p>
         </div>
         <div class="benefit-card">
           <span class="icon-badge gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></span>
@@ -414,9 +421,14 @@
           <p data-i18n="benefits.c3d">Dow DOWEX™ and DuPont AMBERJET™ — check the specs against the manufacturer's own datasheets.</p>
         </div>
         <div class="benefit-card">
-          <span class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l9-5 9 5-9 5-9-5zM3 8v8l9 5 9-5V8"/></svg></span>
+          <span class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21c4-3 7-6.5 7-10.5A7 7 0 005 10.5C5 14.5 8 18 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></svg></span>
+          <h4 data-i18n="benefits.c5t">Local stock, shipped worldwide</h4>
+          <p data-i18n="benefits.c5d">Resin and filter vessels held locally in Johor Bahru; activated carbon sourced to order — we ship internationally.</p>
+        </div>
+        <div class="benefit-card">
+          <span class="icon-badge gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8l9-5 9 5-9 5-9-5zM3 8v8l9 5 9-5V8"/></svg></span>
           <h4 data-i18n="benefits.c4t">Direct, no-pressure contact</h4>
-          <p data-i18n="benefits.c4d">You're talking to the person handling the sale, not a call centre.</p>
+          <p data-i18n="benefits.c4d">You're talking to the person handling the sale, not a call centre — fast replies during business hours.</p>
         </div>
       </div>
     </div>
@@ -427,68 +439,106 @@
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow"><span class="dash"></span><span data-i18n="products.eyebrow">Available Now</span></span>
-        <h2 data-i18n="products.title">Two lots, both sealed and dry</h2>
-        <p data-i18n="products.sub">Specs below are the manufacturer's original published properties when new — not a test on this specific stock. Ask for a sample if exact performance matters for your application.</p>
-      </div>
-      <div class="products-grid reveal">
-
-        <div class="spec-card">
-          <div class="spec-swatch" style="background:linear-gradient(135deg,#63A3B5,#3D7A8C);">
-            <svg class="swatch-beads" viewBox="0 0 400 96" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="70" r="14" fill="#fff"/><circle cx="70" cy="88" r="10" fill="#fff"/><circle cx="110" cy="72" r="12" fill="#fff"/><circle cx="160" cy="90" r="9" fill="#fff"/><circle cx="200" cy="75" r="13" fill="#fff"/><circle cx="250" cy="92" r="8" fill="#fff"/><circle cx="290" cy="78" r="11" fill="#fff"/><circle cx="340" cy="90" r="10" fill="#fff"/><circle cx="380" cy="74" r="12" fill="#fff"/></svg>
-            <span class="grade">Mixed Bed · UPW</span>
-          </div>
-          <h3>DOWEX™ Monosphere™ MR-3 UPW</h3>
-          <p class="spec-desc" data-i18n="products.dowex.desc">Uniform-particle-size mixed cation/anion resin from Dow, built for ultrapure water polishing.</p>
-          <table class="spec-table">
-            <tr><td data-i18n="products.label.brand">Brand</td><td>Dow / DOWEX™</td></tr>
-            <tr><td data-i18n="products.label.type">Type</td><td data-i18n="products.type.mixed">Mixed bed (cation + anion)</td></tr>
-            <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
-            <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.qty.ask">Ask for current volume</td></tr>
-            <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
-          </table>
-          <div class="spec-card-foot"><a href="#contact" data-i18n="products.cta">Enquire about this lot →</a></div>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-swatch" style="background:linear-gradient(135deg,#C6903E,#8f6427);">
-            <svg class="swatch-beads" viewBox="0 0 400 96" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="70" r="14" fill="#fff"/><circle cx="70" cy="88" r="10" fill="#fff"/><circle cx="110" cy="72" r="12" fill="#fff"/><circle cx="160" cy="90" r="9" fill="#fff"/><circle cx="200" cy="75" r="13" fill="#fff"/><circle cx="250" cy="92" r="8" fill="#fff"/><circle cx="290" cy="78" r="11" fill="#fff"/><circle cx="340" cy="90" r="10" fill="#fff"/><circle cx="380" cy="74" r="12" fill="#fff"/></svg>
-            <span class="grade">Mixed Bed · UPW</span>
-          </div>
-          <h3>AMBERJET™ UP6040</h3>
-          <p class="spec-desc" data-i18n="products.amberjet.desc">Semiconductor-grade mixed-bed resin from DuPont/Rohm and Haas, built for final polishing in ultrapure water.</p>
-          <table class="spec-table">
-            <tr><td data-i18n="products.label.brand">Brand</td><td>DuPont / AMBERJET™</td></tr>
-            <tr><td data-i18n="products.label.type">Type</td><td data-i18n="products.type.mixed">Mixed bed (cation + anion)</td></tr>
-            <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
-            <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.qty.ask">Ask for current volume</td></tr>
-            <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
-          </table>
-          <div class="spec-card-foot"><a href="#contact" data-i18n="products.cta">Enquire about this lot →</a></div>
-        </div>
-
+        <h2 data-i18n="products.title">Browse by category</h2>
+        <p data-i18n="products.sub">Click a category below to see what's available and the current details.</p>
       </div>
 
-      <div class="also-available reveal"><span class="line"></span><span class="tag" data-i18n="products.also">Also Currently Available</span><span class="line"></span></div>
+      <div class="product-tabs reveal">
+        <button class="active" data-tab="resin" data-i18n="tabs.resin">Ion Exchange Resin</button>
+        <button data-tab="vessels" data-i18n="tabs.vessels">Filter Vessels</button>
+        <button data-tab="carbon" data-i18n="tabs.carbon">Activated Carbon</button>
+      </div>
 
-      <div class="products-grid reveal">
-        <div class="spec-card spec-card-wide">
-          <div class="spec-photo"><img src="images/frp-vessels-2.jpg" alt="Rows of used FRP fibreglass pressure vessels in storage" loading="lazy"></div>
-          <div>
-            <h3 data-i18n="products.frp.title">Used FRP Filter Vessels</h3>
-            <p class="spec-desc" data-i18n="products.frp.desc">Fibreglass-reinforced plastic (FRP) pressure vessels, previously used to house filter media such as sand, activated carbon, or softening resin. No manufacturer branding.</p>
+      <div class="tab-panel active" data-tab="resin">
+        <div class="products-grid reveal">
+
+          <div class="spec-card">
+            <div class="spec-swatch" style="background:linear-gradient(135deg,#63A3B5,#3D7A8C);">
+              <svg class="swatch-beads" viewBox="0 0 400 96" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="70" r="14" fill="#fff"/><circle cx="70" cy="88" r="10" fill="#fff"/><circle cx="110" cy="72" r="12" fill="#fff"/><circle cx="160" cy="90" r="9" fill="#fff"/><circle cx="200" cy="75" r="13" fill="#fff"/><circle cx="250" cy="92" r="8" fill="#fff"/><circle cx="290" cy="78" r="11" fill="#fff"/><circle cx="340" cy="90" r="10" fill="#fff"/><circle cx="380" cy="74" r="12" fill="#fff"/></svg>
+              <span class="grade">Mixed Bed · UPW</span>
+            </div>
+            <h3>DOWEX™ Monosphere™ MR-3 UPW</h3>
+            <p class="spec-desc" data-i18n="products.dowex.desc">Uniform-particle-size mixed cation/anion resin from Dow, built for ultrapure water polishing.</p>
             <table class="spec-table">
-              <tr><td data-i18n="products.label.brand">Brand</td><td data-i18n="products.frp.brand">Unbranded</td></tr>
-              <tr><td data-i18n="products.label.size">Size</td><td data-i18n="products.frp.size">Varies — tell us the diameter/height you need</td></tr>
+              <tr><td data-i18n="products.label.brand">Brand</td><td>Dow / DOWEX™</td></tr>
+              <tr><td data-i18n="products.label.type">Type</td><td data-i18n="products.type.mixed">Mixed bed (cation + anion)</td></tr>
               <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
-              <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.frp.qty">Several dozen units on hand</td></tr>
+              <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.qty.ask">Ask for current volume</td></tr>
               <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
             </table>
-            <div class="spec-card-foot"><a href="#contact" data-i18n="products.frp.cta">Enquire about these vessels →</a></div>
+            <div class="spec-card-foot"><a href="#contact" data-i18n="products.cta">Enquire about this lot →</a></div>
+          </div>
+
+          <div class="spec-card">
+            <div class="spec-swatch" style="background:linear-gradient(135deg,#C6903E,#8f6427);">
+              <svg class="swatch-beads" viewBox="0 0 400 96" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="70" r="14" fill="#fff"/><circle cx="70" cy="88" r="10" fill="#fff"/><circle cx="110" cy="72" r="12" fill="#fff"/><circle cx="160" cy="90" r="9" fill="#fff"/><circle cx="200" cy="75" r="13" fill="#fff"/><circle cx="250" cy="92" r="8" fill="#fff"/><circle cx="290" cy="78" r="11" fill="#fff"/><circle cx="340" cy="90" r="10" fill="#fff"/><circle cx="380" cy="74" r="12" fill="#fff"/></svg>
+              <span class="grade">Mixed Bed · UPW</span>
+            </div>
+            <h3>AMBERJET™ UP6040</h3>
+            <p class="spec-desc" data-i18n="products.amberjet.desc">Semiconductor-grade mixed-bed resin from DuPont/Rohm and Haas, built for final polishing in ultrapure water.</p>
+            <table class="spec-table">
+              <tr><td data-i18n="products.label.brand">Brand</td><td>DuPont / AMBERJET™</td></tr>
+              <tr><td data-i18n="products.label.type">Type</td><td data-i18n="products.type.mixed">Mixed bed (cation + anion)</td></tr>
+              <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
+              <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.qty.ask">Ask for current volume</td></tr>
+              <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
+            </table>
+            <div class="spec-card-foot"><a href="#contact" data-i18n="products.cta">Enquire about this lot →</a></div>
+          </div>
+
+        </div>
+        <p class="products-note" data-i18n="products.note">* Both were originally designed for non-regenerable, single-use polishing service, so remaining exchange capacity can vary — we'd rather you test a sample than take our word for it.</p>
+      </div>
+
+      <div class="tab-panel" data-tab="vessels">
+        <div class="products-grid reveal">
+          <div class="spec-card spec-card-wide">
+            <div class="spec-photo"><img src="images/frp-vessels-2.jpg" alt="Rows of used FRP fibreglass pressure vessels in storage" loading="lazy"></div>
+            <div>
+              <h3 data-i18n="products.frp.title">Used FRP Filter Vessels</h3>
+              <p class="spec-desc" data-i18n="products.frp.desc">Fibreglass-reinforced plastic (FRP) pressure vessels, previously used to house filter media such as sand, activated carbon, or softening resin. No manufacturer branding.</p>
+              <table class="spec-table">
+                <tr><td data-i18n="products.label.brand">Brand</td><td data-i18n="products.frp.brand">Unbranded</td></tr>
+                <tr><td data-i18n="products.label.size">Size</td><td data-i18n="products.frp.size">Varies — tell us the diameter/height you need</td></tr>
+                <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.condition.used">Used, sealed dry storage</td></tr>
+                <tr><td data-i18n="products.label.qty">Quantity</td><td data-i18n="products.frp.qty">Several dozen units on hand</td></tr>
+                <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
+              </table>
+              <div class="spec-card-foot"><a href="#contact" data-i18n="products.frp.cta">Enquire about these vessels →</a></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <p class="products-note" data-i18n="products.note">* Both were originally designed for non-regenerable, single-use polishing service, so remaining exchange capacity can vary — we'd rather you test a sample than take our word for it.</p>
+      <div class="tab-panel" data-tab="carbon">
+        <div class="products-grid reveal">
+          <div class="spec-card spec-card-wide">
+            <div class="spec-photo"><img src="images/carbon-bowl.jpg" alt="Close-up of granular coconut shell activated carbon" loading="lazy"></div>
+            <div>
+              <h3 data-i18n="products.carbon.title">Granular Coconut Shell Activated Carbon</h3>
+              <p class="spec-desc" data-i18n="products.carbon.desc">New activated carbon made from coconut shells, sourced from Malaysia and Sri Lanka, supplied in a range of mesh sizes for different filtration needs.</p>
+              <table class="spec-table">
+                <tr><td data-i18n="products.label.origin">Origin</td><td data-i18n="products.carbon.origin">Malaysia &amp; Sri Lanka</td></tr>
+                <tr><td data-i18n="products.label.condition">Condition</td><td data-i18n="products.carbon.condition">New</td></tr>
+                <tr><td data-i18n="products.label.mesh">Mesh Sizes</td><td data-i18n="products.carbon.mesh">On request — common sizes include 4×8, 3×30, 8×30</td></tr>
+                <tr><td data-i18n="products.label.stock">Stock</td><td data-i18n="products.carbon.stock">Sourced to order, not held as surplus</td></tr>
+                <tr><td data-i18n="products.label.packaging">Packaging</td><td data-i18n="products.carbon.packaging">Confirmed upon enquiry</td></tr>
+                <tr><td data-i18n="products.label.price">Price</td><td data-i18n="products.price.ask">On request</td></tr>
+              </table>
+              <div class="spec-apps">
+                <span data-i18n="products.carbon.app1">Potable water treatment</span>
+                <span data-i18n="products.carbon.app2">Industrial / DI / demineralised water</span>
+                <span data-i18n="products.carbon.app3">Wastewater treatment</span>
+                <span data-i18n="products.carbon.app4">Gold recovery</span>
+                <span data-i18n="products.carbon.app5">Air purification</span>
+                <span data-i18n="products.carbon.app6">Radioactive iodine removal</span>
+              </div>
+              <div class="spec-card-foot"><a href="#contact" data-i18n="products.carbon.cta">Enquire about activated carbon →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -557,6 +607,7 @@
                 <option>DOWEX Monosphere MR-3 UPW</option>
                 <option>AMBERJET UP6040</option>
                 <option data-i18n="form.grade.opt4">FRP Filter Vessels (unbranded)</option>
+                <option data-i18n="form.grade.opt5">Activated Carbon (coconut shell)</option>
                 <option data-i18n="form.grade.opt3">Either / whichever is available</option>
               </select>
             </div>
@@ -687,20 +738,26 @@ const dict = {
   "gallery.c3k":{zh:"密封存放",en:"Sealed Storage",ms:"Simpanan Tertutup"},
   "gallery.c3v":{zh:"自卸出后一直保持干燥未开封",en:"Kept dry and unopened since removal",ms:"Disimpan kering dan tidak dibuka sejak dikeluarkan"},
 
-  "benefits.eyebrow":{zh:"为何考虑这批库存",en:"Why Consider This Stock",ms:"Kenapa Pertimbangkan Stok Ini"},
-  "benefits.title":{zh:"品牌树脂，按其实际价值定价",en:"Branded resin, priced for what it actually is",ms:"Resin berjenama, dihargai mengikut nilai sebenar"},
-  "benefits.c1t":{zh:"低于全新树脂的价格",en:"Below new-resin pricing",ms:"Harga bawah resin baharu"},
-  "benefits.c1d":{zh:"闲置库存，价格将根据您所需数量另行商定。",en:"Surplus stock, priced accordingly once we know the volume you need.",ms:"Stok lebihan, harga ditentukan setelah kami tahu kuantiti yang anda perlukan."},
-  "benefits.c2t":{zh:"先检测再决定购买",en:"Verify before you buy",ms:"Sahkan sebelum membeli"},
-  "benefits.c2d":{zh:"可先在自己的系统上测试样品，再决定是否购买整批。",en:"Test a sample on your own system before committing to the full lot.",ms:"Uji sampel pada sistem anda sendiri sebelum komited kepada keseluruhan lot."},
+  "benefits.eyebrow":{zh:"为何选择我们",en:"Why Work With Us",ms:"Kenapa Bekerjasama Dengan Kami"},
+  "benefits.title":{zh:"闲置库存、按需采购，都按其实际价值定价",en:"Surplus stock, sourced carbon, priced for what it actually is",ms:"Stok lebihan, karbon tempahan, dihargai mengikut nilai sebenar"},
+  "benefits.c1t":{zh:"价格有竞争力且可商量",en:"Competitive, flexible pricing",ms:"Harga kompetitif dan fleksibel"},
+  "benefits.c1d":{zh:"闲置库存与按需采购的货品，价格将根据您所需数量另行商定。",en:"Surplus and sourced stock, priced accordingly for bulk orders once we know the volume you need.",ms:"Stok lebihan dan tempahan, harga ditentukan untuk tempahan pukal setelah kami tahu kuantiti yang anda perlukan."},
+  "benefits.c2t":{zh:"先检测再决定购买",en:"Test before you buy",ms:"Uji sebelum membeli"},
+  "benefits.c2d":{zh:"可索取免费样品，先在自己的系统上测试，再决定是否购买。",en:"Free samples available on request, so you can verify on your own system before committing.",ms:"Sampel percuma tersedia atas permintaan, supaya anda boleh sahkan pada sistem anda sendiri sebelum komited."},
   "benefits.c3t":{zh:"品牌可查证",en:"Genuine, checkable brands",ms:"Jenama tulen, boleh disemak"},
   "benefits.c3d":{zh:"Dow DOWEX™ 与 DuPont AMBERJET™——可对照厂商原厂数据表自行核实。",en:"Dow DOWEX™ and DuPont AMBERJET™ — check the specs against the manufacturer's own datasheets.",ms:"Dow DOWEX™ dan DuPont AMBERJET™ — semak spesifikasi berbanding helaian data pengeluar sendiri."},
   "benefits.c4t":{zh:"直接沟通，无推销压力",en:"Direct, no-pressure contact",ms:"Hubungan terus, tiada tekanan"},
-  "benefits.c4d":{zh:"您接洽的是直接负责这批交易的人，而非客服中心。",en:"You're talking to the person handling the sale, not a call centre.",ms:"Anda bercakap dengan orang yang mengendalikan jualan ini, bukan pusat panggilan."},
+  "benefits.c4d":{zh:"您接洽的是直接负责这批交易的人，而非客服中心——在营业时间内会尽快回复。",en:"You're talking to the person handling the sale, not a call centre — fast replies during business hours.",ms:"Anda bercakap dengan orang yang mengendalikan jualan ini, bukan pusat panggilan — balasan pantas semasa waktu pejabat."},
+  "benefits.c5t":{zh:"本地现货，可发往全球",en:"Local stock, shipped worldwide",ms:"Stok tempatan, dihantar ke seluruh dunia"},
+  "benefits.c5d":{zh:"树脂与过滤罐现货存放于柔佛新山；活性炭按订单采购——均可安排国际运输。",en:"Resin and filter vessels held locally in Johor Bahru; activated carbon sourced to order — we ship internationally.",ms:"Resin dan tangki penapis disimpan tempatan di Johor Bahru; karbon diaktifkan ditempah mengikut pesanan — kami hantar ke peringkat antarabangsa."},
 
   "products.eyebrow":{zh:"现货清单",en:"Available Now",ms:"Tersedia Sekarang"},
-  "products.title":{zh:"两批库存，均密封干放",en:"Two lots, both sealed and dry",ms:"Dua lot, kedua-duanya tertutup dan kering"},
-  "products.sub":{zh:"以下规格为厂商对该产品全新状态时公布的参数——并非针对这批库存的实测结果。若具体性能对您很关键，建议先索取样品测试。",en:"Specs below are the manufacturer's original published properties when new — not a test on this specific stock. Ask for a sample if exact performance matters for your application.",ms:"Spesifikasi di bawah ialah ciri-ciri asal yang diterbitkan oleh pengeluar semasa baharu — bukan ujian bagi stok khusus ini. Minta sampel jika prestasi tepat penting untuk aplikasi anda."},
+  "products.title":{zh:"按分类浏览",en:"Browse by category",ms:"Layari mengikut kategori"},
+  "products.sub":{zh:"点击下方分类标签，查看对应产品与详情。",en:"Click a category below to see what's available and the current details.",ms:"Klik kategori di bawah untuk melihat apa yang tersedia dan butiran terkini."},
+
+  "tabs.resin":{zh:"离子交换树脂",en:"Ion Exchange Resin",ms:"Resin Pertukaran Ion"},
+  "tabs.vessels":{zh:"过滤罐",en:"Filter Vessels",ms:"Tangki Penapis"},
+  "tabs.carbon":{zh:"活性炭",en:"Activated Carbon",ms:"Karbon Diaktifkan"},
   "products.dowex.desc":{zh:"Dow 出品的均匀粒径混合阳/阴离子树脂，为超纯水精处理而生产。",en:"Uniform-particle-size mixed cation/anion resin from Dow, built for ultrapure water polishing.",ms:"Resin kation/anion campuran saiz zarah seragam daripada Dow, dibina untuk penggilapan air ultra tulen."},
   "products.amberjet.desc":{zh:"DuPont/Rohm and Haas 出品的半导体级混合床树脂，为超纯水系统的最终精处理而生产。",en:"Semiconductor-grade mixed-bed resin from DuPont/Rohm and Haas, built for final polishing in ultrapure water.",ms:"Resin katil campuran gred semikonduktor daripada DuPont/Rohm and Haas, dibina untuk penggilapan akhir dalam air ultra tulen."},
   "products.label.brand":{zh:"品牌",en:"Brand",ms:"Jenama"},
@@ -723,6 +780,25 @@ const dict = {
   "products.frp.size":{zh:"规格不一——请告知所需直径/高度",en:"Varies — tell us the diameter/height you need",ms:"Berbeza-beza — beritahu kami diameter/ketinggian yang diperlukan"},
   "products.frp.qty":{zh:"现有几十个",en:"Several dozen units on hand",ms:"Beberapa puluh unit tersedia"},
   "products.frp.cta":{zh:"询问这批过滤罐 →",en:"Enquire about these vessels →",ms:"Bertanya tentang tangki ini →"},
+
+  "products.label.origin":{zh:"产地",en:"Origin",ms:"Asal"},
+  "products.label.mesh":{zh:"目数规格",en:"Mesh Sizes",ms:"Saiz Mesh"},
+  "products.label.stock":{zh:"库存",en:"Stock",ms:"Stok"},
+  "products.label.packaging":{zh:"包装",en:"Packaging",ms:"Pembungkusan"},
+  "products.carbon.title":{zh:"椰壳颗粒活性炭",en:"Granular Coconut Shell Activated Carbon",ms:"Karbon Diaktifkan Tempurung Kelapa Berbutir"},
+  "products.carbon.desc":{zh:"来自马来西亚及斯里兰卡的全新椰壳活性炭，提供多种目数规格，适用于不同过滤需求。",en:"New activated carbon made from coconut shells, sourced from Malaysia and Sri Lanka, supplied in a range of mesh sizes for different filtration needs.",ms:"Karbon diaktifkan baharu diperbuat daripada tempurung kelapa, dari Malaysia dan Sri Lanka, dibekalkan dalam pelbagai saiz mesh untuk keperluan penapisan berbeza."},
+  "products.carbon.origin":{zh:"马来西亚及斯里兰卡",en:"Malaysia &amp; Sri Lanka",ms:"Malaysia &amp; Sri Lanka"},
+  "products.carbon.condition":{zh:"全新",en:"New",ms:"Baharu"},
+  "products.carbon.mesh":{zh:"按需提供——常见规格包括 4×8、3×30、8×30",en:"On request — common sizes include 4×8, 3×30, 8×30",ms:"Atas permintaan — saiz biasa termasuk 4×8, 3×30, 8×30"},
+  "products.carbon.stock":{zh:"按订单采购，非现货库存",en:"Sourced to order, not held as surplus",ms:"Ditempah mengikut pesanan, bukan stok lebihan"},
+  "products.carbon.packaging":{zh:"询价后确认",en:"Confirmed upon enquiry",ms:"Disahkan semasa pertanyaan"},
+  "products.carbon.app1":{zh:"饮用水处理",en:"Potable water treatment",ms:"Rawatan air minum"},
+  "products.carbon.app2":{zh:"工业用水/去离子水/除盐水",en:"Industrial / DI / demineralised water",ms:"Air industri / DI / ternyahmineral"},
+  "products.carbon.app3":{zh:"废水处理",en:"Wastewater treatment",ms:"Rawatan air sisa"},
+  "products.carbon.app4":{zh:"黄金回收",en:"Gold recovery",ms:"Pemulihan emas"},
+  "products.carbon.app5":{zh:"空气净化",en:"Air purification",ms:"Penulenan udara"},
+  "products.carbon.app6":{zh:"放射性碘去除",en:"Radioactive iodine removal",ms:"Penyingkiran iodin radioaktif"},
+  "products.carbon.cta":{zh:"询问活性炭供应 →",en:"Enquire about activated carbon →",ms:"Bertanya tentang karbon diaktifkan →"},
 
   "apps.eyebrow":{zh:"该类型的常见用途",en:"Where This Type Is Used",ms:"Di Mana Jenis Ini Digunakan"},
   "apps.title":{zh:"混合床树脂通常用在哪里",en:"What mixed-bed resin is normally used for",ms:"Untuk apa resin katil campuran biasa digunakan"},
@@ -773,6 +849,7 @@ const dict = {
   "form.grade.opt0":{zh:"尚未确定",en:"Not sure yet",ms:"Belum pasti"},
   "form.grade.opt3":{zh:"两者皆可 / 以现货为准",en:"Either / whichever is available",ms:"Mana-mana / yang tersedia"},
   "form.grade.opt4":{zh:"玻璃钢过滤罐（无品牌）",en:"FRP Filter Vessels (unbranded)",ms:"Tangki Penapis FRP (tiada jenama)"},
+  "form.grade.opt5":{zh:"活性炭（椰壳）",en:"Activated Carbon (coconut shell)",ms:"Karbon Diaktifkan (tempurung kelapa)"},
   "form.qty":{zh:"所需数量",en:"Quantity Needed",ms:"Kuantiti Diperlukan"},
   "form.qty.ph":{zh:"例如：200升、5桶",en:"e.g. 200L, 5 drums",ms:"cth: 200L, 5 tong"},
   "form.message":{zh:"留言",en:"Message",ms:"Mesej"},
@@ -852,6 +929,20 @@ applyLang('en');
   s += `</g>`;
   svg.innerHTML = s;
 })();
+
+/* Product category tabs */
+document.querySelectorAll('.product-tabs button').forEach(btn=>{
+  btn.addEventListener('click', function(){
+    const tab = this.dataset.tab;
+    document.querySelectorAll('.product-tabs button').forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    document.querySelectorAll('.tab-panel').forEach(p=>{
+      const show = p.dataset.tab === tab;
+      p.classList.toggle('active', show);
+      if(show){ p.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')); }
+    });
+  });
+});
 
 /* Scroll reveal */
 const io = new IntersectionObserver((entries)=>{
